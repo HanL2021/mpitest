@@ -1,0 +1,22 @@
+#!/bin/bash
+
+#######################################
+#PBS -A ONRDC47625594
+#PBS -l select=1:ncpus=128:mpiprocs=128
+#######################################
+
+#PBS -q debug
+#PBS -l walltime=00:10:00
+
+#PBS -N test
+#PBS -j oe
+
+
+
+cd $PBS_O_WORKDIR
+
+export num_rounds=200
+aprun -n 128 ./test  > result
+
+
+exit
